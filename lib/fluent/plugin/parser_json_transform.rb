@@ -5,7 +5,7 @@ module Fluent
       config_param :transform_script, :string
 
       def configure(conf)
-        @transform_script ||= "../../transform/nothing.rb"
+        @transform_script ||= "#{__dir__}/transform/nothing.rb"
         require @transform_script
         @transformer = JSONTransformer.new
       end
@@ -16,6 +16,7 @@ module Fluent
         return text, @transformer.transform(raw_json)
       end
     end
+  register_template("json_transform", Proc.new { JSONTransformParser.new })
   end
 end
 
