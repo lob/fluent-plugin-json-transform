@@ -1,8 +1,8 @@
 module Fluent
   class TextParser
     class JSONTransformParser
+      DEFAULTS = [ 'nothing', 'flatten' ]
 
-      DEFAULTS = [ 'nothing', 'flatten', 'nest' ]
       include Configurable
       config_param :transform_script, :string
 
@@ -10,7 +10,7 @@ module Fluent
         @transform_script = conf['transform_script']
 
         if DEFAULTS.include?(@transform_script)
-          @transform_script = 
+          @transform_script =
             "#{__dir__}/../../transform/#{@transform_script}.rb"
         end
 
@@ -18,7 +18,6 @@ module Fluent
         @transformer = JSONTransformer.new
       end
 
-    
       def call(text)
         raw_json = JSON.parse(text)
         return nil, @transformer.transform(raw_json)
