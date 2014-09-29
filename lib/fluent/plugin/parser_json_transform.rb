@@ -5,6 +5,7 @@ module Fluent
 
       include Configurable
       config_param :transform_script, :string
+      config_param :script_path, :string
 
       def configure(conf)
         @transform_script = conf['transform_script']
@@ -12,6 +13,8 @@ module Fluent
         if DEFAULTS.include?(@transform_script)
           @transform_script =
             "#{__dir__}/../../transform/#{@transform_script}.rb"
+        elsif @transform_script == 'custom'
+          @transform_script = conf['script_path']
         end
 
         require @transform_script
