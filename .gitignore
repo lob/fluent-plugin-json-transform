@@ -1,3 +1,4 @@
+*.gem
 .vagrant/
 Vagrantfile
 test.sh
