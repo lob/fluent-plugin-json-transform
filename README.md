@@ -9,15 +9,13 @@ before storing them in Elasticsearch. It may not be useful for any other purpose
 
 ##Installation
 ```bash
-git clone https://github.com/lob/fluent-plugin-json-transform
-cd fluent-plugin-json-transform && gem build fluent-plugin-json-transform.gemspec
 gem install fluent-plugin-json-transform
 ```
 
 ##Configuration
 ```
 <source>
-  type [tail|tcp|uydp|syslog|http] # or a custom input type which accepts the "format" parameter
+  type [tail|tcp|udp|syslog|http] # or a custom input type which accepts the "format" parameter
   format json_transform
   transform_script [nothing|flatten|custom]
   script_path "/home/grayson/transform_script.rb" # ignored if transform_script != custom
