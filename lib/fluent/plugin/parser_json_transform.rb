@@ -1,7 +1,6 @@
 module Fluent
   class TextParser
     class JSONTransformParser
-      require 'json'
       DEFAULTS = [ 'nothing', 'flatten' ]
 
       include Configurable
@@ -22,7 +21,7 @@ module Fluent
         @transformer = JSONTransformer.new
       end
 
-      def call(text)
+      def parse(text)
         raw_json = JSON.parse(text)
         return nil, @transformer.transform(raw_json)
       end
