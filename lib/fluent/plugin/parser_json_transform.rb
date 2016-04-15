@@ -21,6 +21,11 @@ module Fluent
         @transformer = JSONTransformer.new
       end
 
+      def call(text)
+        raw_json = JSON.parse(text)
+        return nil, @transformer.transform(raw_json)
+      end
+
       def parse(text)
         raw_json = JSON.parse(text)
         return nil, @transformer.transform(raw_json)
