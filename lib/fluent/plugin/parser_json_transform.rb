@@ -1,6 +1,7 @@
 module Fluent
   class TextParser
     class JSONTransformParser
+      require 'json'
       DEFAULTS = [ 'nothing', 'flatten' ]
 
       include Configurable
