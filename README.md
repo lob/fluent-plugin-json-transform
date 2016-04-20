@@ -1,3 +1,7 @@
+# !!! NO LONGER MAINTAINED !!!
+
+**Please see [mjourard/fluent-plugin-json-transform](https://github.com/mjourard/fluent-plugin-json-transform) for the continuing support for this plugin.**
+
 # JSON Transform parser plugin for Fluentd
 
 ##Overview
