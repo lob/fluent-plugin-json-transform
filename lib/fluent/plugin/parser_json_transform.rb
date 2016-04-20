@@ -25,6 +25,11 @@ module Fluent
         raw_json = JSON.parse(text)
         return nil, @transformer.transform(raw_json)
       end
+
+      def parse(text)
+        raw_json = JSON.parse(text)
+        return nil, @transformer.transform(raw_json)
+      end
     end
   register_template("json_transform", Proc.new { JSONTransformParser.new })
   end
